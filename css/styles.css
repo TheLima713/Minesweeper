@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap');
+
+:root {
+    --main0: #fff;
+    --main1: #cfc;
+    --main2: #8f8;
+    --main3: #4f4;
+    --main4: #0f0;
+    --main5: #0d0;
+    --main6: #0b0;
+    --main7: #090;
+    --main8: #070;
+    --sec0: #eec;
+    --sec1: #ddb;
+    --neutral0: #000;
+    --neutral7: #fff;
+}
+
+body {
+    background-color: var(--main8);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.field {
+    background-color: var(--main3);
+
+    width: min(95vw,95vh);
+    height: fit-content;
+
+    border: 15px solid var(--main7);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.row {
+    background-color: var(--main3);
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.cell {
+    aspect-ratio: 1/1;
+    
+    display: flex;
+    flex: 1;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 600;
+}
+
+.grass0 {
+    background-color: var(--main4);
+}
+
+.grass1 {
+    background-color: var(--main5);
+}
+
+.dug0 {
+    background-color: var(--sec0);
+}
+
+.dug1 {
+    background-color: var(--sec1);
+}
+
+.menu {
+    width: 30%;
+    height: 10vh;
+    margin: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu button {
+    background-color: var(--main6);
+    color: var(--neutral7);
+    
+    width: 7vh;
+    height: 7vh;
+    position: relative;
+
+    
+    border: 2px solid var(--neutral0);
+    border-radius: 50%;
+}
+
+.menu div {
+    background-color: var(--main6);
+    color: var(--neutral0);
+    
+    width: 12vh;
+    height: 12vh;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    
+    border: 2px solid var(--neutral0);
+    border-radius: 50%;
+}
+
+.dig i {
+    transform: rotate(0.5turn);
+    transition: 0.5s;
+}
+.flag-dig:not(.dig) i {
+    color: #f20;
+}
