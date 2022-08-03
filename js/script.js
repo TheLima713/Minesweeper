@@ -12,8 +12,8 @@ const digBtn = document.getElementById('flag-dig')
 
 var firstClick = true
 var flagging = false
-var width = 25
-var height = 20
+var width = 15
+var height = 25
 var level = 0
 var bombProportion = [0.05,.1,.15,.2,.3]
 var currBombs = 0
@@ -37,6 +37,8 @@ newBtn.addEventListener('click',()=>{
 flagCountEl.addEventListener('click',()=>{
     level = (level+1)%bombProportion.length
     var iBomb = '<i class="fa-solid fa-bomb"></i>'.repeat(level+1)
+    currBombs = Math.floor(width*height*bombProportion[level])
+    usedFlags = currBombs
     flagCountEl.innerHTML = iBomb + ' ' + usedFlags
 })
 
@@ -164,19 +166,25 @@ async function clickCell(x,y,board) {
                 break
         }
     }
-    if(usedFlags==0 && currBombs==0) alert('you win, yay..')
+    if(usedFlags==0 && currBombs==0) {
+        showBomb('win')
+    }
 }
 
-async function showBomb() {
+async function showBomb(win) {
     let bomb = fieldEl.querySelector('.b')
-    if(bomb==null) {
+    if(bomb==null&&win!='win') {
         setTimeout(newGame,3000)
         return
     }
     bomb.innerHTML = `<i class="fa-solid fa-bomb"></i>`
+    if(win=='win') {
+        let randC = Math.floor(Math.random()*colors.length-1)
+        bomb.style.color = colors[randC]
+    }
     bomb.classList.remove('b')
     await sleep(100)
-    showBomb()
+    win=='win' ? showBomb('win') : showBomb()
 }
 
 function digNear(x,y,board) {
